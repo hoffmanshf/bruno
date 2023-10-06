@@ -539,7 +539,7 @@ class BrnSelectionEntity {
 
   /// 接口返回默认展示tag个数
   int getDefaultShowCount() {
-    int defaultShowCount = 3;
+    int defaultShowCount = 9;
     if (extMap.containsKey('defaultShowCount')) {
       defaultShowCount = extMap['defaultShowCount'] ?? defaultShowCount;
     }

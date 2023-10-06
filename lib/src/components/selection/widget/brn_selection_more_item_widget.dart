@@ -168,7 +168,8 @@ class __FilterCommonTypeWidgetState extends State<_FilterCommonTypeWidget> {
   }
 
   bool _isVisibleMore() {
-    return widget.selectionEntity.currentTagListForEntity().length > 12;
+    return widget.selectionEntity.currentTagListForEntity().length >
+        widget.selectionEntity.getDefaultShowCount();
   }
 
   ///标题和更多，比如商圈
