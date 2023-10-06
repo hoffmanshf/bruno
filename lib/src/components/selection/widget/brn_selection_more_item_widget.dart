@@ -143,7 +143,8 @@ class __FilterCommonTypeWidgetState extends State<_FilterCommonTypeWidget> {
               //标签的筛选条件
               Visibility(
                 visible: widget.selectionEntity
-                        .currentShowTagByExpanded(isExpanded).isNotEmpty,
+                    .currentShowTagByExpanded(isExpanded)
+                    .isNotEmpty,
                 child: Padding(
                   padding: EdgeInsets.only(top: 12),
                   child: _buildSelectionTag(),
@@ -167,8 +168,7 @@ class __FilterCommonTypeWidgetState extends State<_FilterCommonTypeWidget> {
   }
 
   bool _isVisibleMore() {
-    return widget.selectionEntity.currentTagListForEntity().length >
-        widget.selectionEntity.getDefaultShowCount();
+    return widget.selectionEntity.currentTagListForEntity().length > 12;
   }
 
   ///标题和更多，比如商圈
@@ -226,7 +226,11 @@ class __FilterCommonTypeWidgetState extends State<_FilterCommonTypeWidget> {
               } else if (data.filterType == BrnSelectionFilterType.checkbox) {
                 if (!data.isSelected) {
                   if (!BrnSelectionUtil.checkMaxSelectionCount(data)) {
-                    BrnToast.show(BrnIntl.of(context).localizedResource.filterConditionCountLimited, context);
+                    BrnToast.show(
+                        BrnIntl.of(context)
+                            .localizedResource
+                            .filterConditionCountLimited,
+                        context);
                     return;
                   }
                 }
@@ -260,8 +264,7 @@ class __FilterCommonTypeWidgetState extends State<_FilterCommonTypeWidget> {
         int time = int.tryParse(entity.value ?? "") ??
             DateTime.now().millisecondsSinceEpoch;
         showName = DateTimeFormatter.formatDate(
-            DateTime.fromMillisecondsSinceEpoch(time),
-            'yyyy/MMMM/dd');
+            DateTime.fromMillisecondsSinceEpoch(time), 'yyyy/MMMM/dd');
       }
     } else {
       showName = entity.title;
@@ -298,7 +301,8 @@ class __FilterCommonTypeWidgetState extends State<_FilterCommonTypeWidget> {
         pickerMode: BrnDateTimePickerMode.date,
         pickerTitleConfig: BrnPickerTitleConfig.Default,
         initialDateTime: DateTime.fromMillisecondsSinceEpoch(time),
-        dateFormat: BrnIntl.of(context).localizedResource.dateFormatYYYYMMMMDD, onConfirm: (dateTime, list) {
+        dateFormat: BrnIntl.of(context).localizedResource.dateFormatYYYYMMMMDD,
+        onConfirm: (dateTime, list) {
       if (mounted) {
         setState(() {
           data.parent?.clearSelectedEntity();
@@ -517,7 +521,10 @@ class __MoreRangeWidgetState extends State<_MoreRangeWidget> {
         children: <Widget>[
           Expanded(
             child: _buildRangeField(
-                BrnIntl.of(context).localizedResource.minValue, minController, minFocusNode, widget.themeData),
+                BrnIntl.of(context).localizedResource.minValue,
+                minController,
+                minFocusNode,
+                widget.themeData),
           ),
           Container(
 //          height: 38,
@@ -530,7 +537,10 @@ class __MoreRangeWidgetState extends State<_MoreRangeWidget> {
           ),
           Expanded(
             child: _buildRangeField(
-                BrnIntl.of(context).localizedResource.maxValue, maxController, maxFocusNode, widget.themeData),
+                BrnIntl.of(context).localizedResource.maxValue,
+                maxController,
+                maxFocusNode,
+                widget.themeData),
           ),
         ],
       );
@@ -650,7 +660,10 @@ class _FilterLayerTypeWidgetState extends State<FilterLayerTypeWidget> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Expanded(
-                  child: Text(_isEmptyCondition() ? BrnIntl.of(context).localizedResource.pleaseChoose : _getCondition(),
+                  child: Text(
+                      _isEmptyCondition()
+                          ? BrnIntl.of(context).localizedResource.pleaseChoose
+                          : _getCondition(),
                       style: _isEmptyCondition()
                           ? widget.themeData.hintTextStyle.generateTextStyle()
                           : widget.themeData.optionTextStyle
