@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 
 /// [BrnSelectionSingleListWidget] 子组件中的单项
 class BrnSelectionCommonItemWidget extends StatelessWidget {
-
   /// 单项数据
   final BrnSelectionEntity item;
 
@@ -72,7 +71,6 @@ class BrnSelectionCommonItemWidget extends StatelessWidget {
         }
       },
       child: Container(
-        padding: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
         color: getItemBGColor(),
         child: Align(
           alignment: Alignment.centerLeft,
@@ -80,10 +78,12 @@ class BrnSelectionCommonItemWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Row(
-                children: <Widget>[
-                  Container(
-                    child: Expanded(
+              Padding(
+                padding:
+                    EdgeInsets.only(left: 15, right: 10, top: 10, bottom: 0),
+                child: Row(
+                  children: <Widget>[
+                    Expanded(
                       child: Text(
                         item.title + getSelectedItemCount(item),
                         softWrap: true,
@@ -92,23 +92,27 @@ class BrnSelectionCommonItemWidget extends StatelessWidget {
                         style: getItemTextStyle(),
                       ),
                     ),
-                  ),
-                  checkbox
-                ],
+                    checkbox
+                  ],
+                ),
               ),
-              Visibility(
-                visible: !BrunoTools.isEmpty(item.subTitle),
-                child: Padding(
-                  padding:
-                      EdgeInsets.only(right: item.isInLastLevel() ? 21 : 0),
-                  child: BrnCSS2Text.toTextView(item.subTitle ?? '',
-                      defaultStyle: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.normal,
-                          decoration: TextDecoration.none,
-                          color: themeData?.commonConfig.colorTextSecondary),
-                      maxLines: 1,
-                      textOverflow: TextOverflow.ellipsis),
+              Padding(
+                padding:
+                    EdgeInsets.only(left: 15, right: 0, top: 0, bottom: 10),
+                child: Visibility(
+                  visible: !BrunoTools.isEmpty(item.subTitle),
+                  child: Padding(
+                    padding:
+                        EdgeInsets.only(right: item.isInLastLevel() ? 21 : 0),
+                    child: BrnCSS2Text.toTextView(item.subTitle ?? '',
+                        defaultStyle: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.normal,
+                            decoration: TextDecoration.none,
+                            color: themeData?.commonConfig.colorTextSecondary),
+                        maxLines: 1,
+                        textOverflow: TextOverflow.ellipsis),
+                  ),
                 ),
               )
             ],
