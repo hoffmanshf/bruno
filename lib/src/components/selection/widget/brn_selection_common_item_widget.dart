@@ -48,7 +48,9 @@ class BrnSelectionCommonItemWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     Container checkbox;
     if (!item.isUnLimit() && (item.children.isEmpty)) {
-      if (item.isInLastLevel() && item.hasCheckBoxBrother()) {
+      if (item.isInLastLevel() &&
+          item.hasCheckBoxBrother() &&
+          item.key == 'property_type') {
         checkbox = Container(
           padding: EdgeInsets.only(left: 6),
           width: 21,
