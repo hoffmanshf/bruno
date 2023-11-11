@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 /// 筛选菜单项
 // ignore: must_be_immutable
 class BrnSelectionMenuItemWidget extends StatelessWidget {
-
   /// 菜单项标题
   final String title;
 
@@ -61,15 +60,11 @@ class BrnSelectionMenuItemWidget extends StatelessWidget {
                   padding: EdgeInsets.only(left: 4),
                   child: isHighLight
                       ? (active
-                          ? BrunoTools.getAssetImageWithBandColor(
-                              BrnAsset.iconArrowUpSelect,
-                              configId: themeData.configId)
-                          : BrunoTools.getAssetImageWithBandColor(
+                          ? BrunoTools.getAssetImage(BrnAsset.iconArrowUpSelect)
+                          : BrunoTools.getAssetImage(
                               BrnAsset.iconArrowDownSelect))
                       : (active
-                          ? BrunoTools.getAssetImageWithBandColor(
-                              BrnAsset.iconArrowUpSelect,
-                              configId: themeData.configId)
+                          ? BrunoTools.getAssetImage(BrnAsset.iconArrowUpSelect)
                           : BrunoTools.getAssetImage(
                               BrnAsset.iconArrowDownUnSelect)))
             ],
